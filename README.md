@@ -4,7 +4,7 @@
 
 This App used Django for the backend and React for the frontend. Its complexity arises from the implementation of microservices and polling from the monolith. Containerization is achieved through the use of Docker.
 
-**This would be my first time to independently deploy an App with Docker and microservices on Heroku.**
+*This would be my first time to independently deploy an App with Docker and microservices on Heroku.*
 
 --------
 
