@@ -1,4 +1,4 @@
-# DealerDashboard (Django + React, Microservices, Docker, and Polling)
+# DealerDashboard (React + Django + PostgreSQL + Heroku; Microservices, Docker, and Polling)
 
 --------
 
