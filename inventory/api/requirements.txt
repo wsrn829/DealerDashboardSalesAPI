@@ -25,3 +25,4 @@ whitenoise==5.3.0
 Requests==2.31.0
 python-decouple
 gunicorn==20.1.0
+corsheaders==3.10.1
