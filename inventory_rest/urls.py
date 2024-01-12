@@ -7,9 +7,14 @@ from .views import (
     api_manufacturer,
     api_vehicle_models,
     api_vehicle_model,
+    api_root,
 )
 
 urlpatterns = [
+    path(
+        "", 
+        api_root, 
+        name="api_root"),  # Use the new view for the root URL
     path(
         "automobiles/",
         api_automobiles,
