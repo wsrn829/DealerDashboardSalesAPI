@@ -2,7 +2,6 @@
 2. `heroku login`
 3. `heroku container:login`
 4. `heroku create`
-5. 
 
 
 1. `pip install pipreqs`
@@ -15,4 +14,5 @@ https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/ | https://git.heroku.com/de
 7. `heroku buildpacks:set heroku/python`
 8. python inventory/api/manage.py collectstatic --noinput
 9. create static directory as in configuration
-
+10. correct path to wsgi.py
+11. run python manage.py collectstatic inside folder with manage.py
