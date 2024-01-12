@@ -10,6 +10,13 @@ from .encoders import (
 from .models import Automobile, Manufacturer, VehicleModel
 
 
+def api_root(request):
+    """
+    A simple view for the root URL ("/").
+    """
+    return JsonResponse({"message": "Welcome to the API root!"})
+
+
 @require_http_methods(["GET", "POST"])
 def api_automobiles(request):
     if request.method == "GET":
