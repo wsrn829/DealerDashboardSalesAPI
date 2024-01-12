@@ -45,13 +45,13 @@ INSTALLED_APPS = [
     'inventory_rest.apps.InventoryRestConfig',
     'django.contrib.admin',
     'django.contrib.auth',
-    'corsheaders',
+    'corsheaders',  
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
