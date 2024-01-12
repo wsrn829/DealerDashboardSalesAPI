@@ -1,4 +1,4 @@
-from common import ModelEncoder
+from .common import ModelEncoder
 
 from .models import Automobile, Manufacturer, VehicleModel
 
