@@ -28,6 +28,7 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('inventory_rest.urls')),
-    path('', lambda request: redirect('/')),  # Redirect root URL to '/'
+    path('', lambda request: redirect('api/')),  # Redirect root URL to '/api/'
+    # path('', RedirectView.as_view(url='/')),  # Redirect root URL to '/'
 
 ]
