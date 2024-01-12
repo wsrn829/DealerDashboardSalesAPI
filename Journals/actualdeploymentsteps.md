@@ -13,4 +13,5 @@ https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/ | https://git.heroku.com/de
 5. pip install gunicorn
 6. DEBUG = False
 7. `heroku buildpacks:set heroku/python`
-8. 
+8. python inventory/api/manage.py collectstatic --noinput
+

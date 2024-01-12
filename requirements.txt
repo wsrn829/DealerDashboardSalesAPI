@@ -2,5 +2,6 @@ dj_database_url==0.5.0
 Django==4.2
 Flask==3.0.0
 Requests==2.31.0
-decouple>=3.5
+decouple==3.5
+
 
