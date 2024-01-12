@@ -1,4 +1,4 @@
-from .common.json import ModelEncoder
+from .common.myjson import ModelEncoder
 
 from .models import Automobile, Manufacturer, VehicleModel
 
