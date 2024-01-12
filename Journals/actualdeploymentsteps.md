@@ -14,4 +14,5 @@ https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/ | https://git.heroku.com/de
 6. DEBUG = False
 7. `heroku buildpacks:set heroku/python`
 8. python inventory/api/manage.py collectstatic --noinput
+9. create static directory as in configuration
 
