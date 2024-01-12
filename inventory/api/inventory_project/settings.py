@@ -42,9 +42,10 @@ DATABASE_URL = config('DATABASE_URL')
 # Application definition
 
 INSTALLED_APPS = [
-    "inventory_rest.apps.InventoryRestConfig",
+    'inventory_rest.apps.InventoryRestConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'corsheaders',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
