@@ -22,6 +22,9 @@ function SalespeopleForm(getSalespeople) {
     setEmployeeId(value);
   };
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8090/';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,7 +33,7 @@ function SalespeopleForm(getSalespeople) {
     data.last_name = lastName;
     data.employee_id = employeeId;
 
-    const salespersonUrl = "http://localhost:8090/api/salespeople/";
+    const salespersonUrl = `${baseUrl}salespeople/`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),
@@ -47,7 +50,7 @@ function SalespeopleForm(getSalespeople) {
       setLastName("");
       setEmployeeId("");
       const getSalespeople = async () => {
-        const salespeopleResponse = await fetch('http://localhost:8090/api/salespeople/');
+        const salespeopleResponse = await fetch(`${baseUrl}salespeople/`);
 
         if (salespeopleResponse.ok) {
           const data = await salespeopleResponse.json();
