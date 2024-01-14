@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 export const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8000/';
+
   useEffect(() => {
     async function getAppointments() {
-      const appointmentsUrl = "http://localhost:8080/api/appointments/";
+      const appointmentsUrl = `${baseUrl}appointments/`;
       const response = await fetch(appointmentsUrl);
       if (response.ok) {
         const responseData = await response.json();
@@ -19,7 +23,7 @@ export const AppointmentList = () => {
   }, [appointments]);
 
   const handleCancel = async (apptId) => {
-    const cancelUrl = `http://localhost:8080/api/appointments/${apptId}/cancel/`;
+    const cancelUrl = `${baseUrl}appointments/${apptId}/cancel/`;
 
     const fetchConfig = {
       method: "put",
@@ -33,7 +37,7 @@ export const AppointmentList = () => {
   };
 
   const handleFinish = async (apptId) => {
-    const finishUrl = `http://localhost:8080/api/appointments/${apptId}/finish/`;
+    const finishUrl = `${baseUrl}appointments/appointments/${apptId}/finish/`;
 
     const fetchConfig = {
       method: "put",
