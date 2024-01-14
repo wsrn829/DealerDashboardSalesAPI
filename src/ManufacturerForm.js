@@ -13,7 +13,11 @@ export default function ManufacturerForm() {
 
   };
 
-  const manufacturerURL = "http://localhost:8100/api/manufacturers/";
+  const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+    : 'http://localhost:8100/';
+
+  const manufacturerURL = `${baseUrl}manufacturers/`;
   const fetchConfig = {
     method: "post",
     body: JSON.stringify(data),
