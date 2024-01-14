@@ -4,8 +4,12 @@ import React, { useState, useEffect }  from "react";
 export default function ManufacturerList() {
     const [manufacturer, setManufacturer] = useState([]);
 
+    const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+    : 'http://localhost:8100/';
+
     async function LoadManufacturer() {
-        const response = await fetch("http://localhost:8100/api/manufacturers/");
+        const response = await fetch(`${baseUrl}manufacturers/`);
         if (response.ok) {
           const data = await response.json();
           setManufacturer(data.manufacturers);
