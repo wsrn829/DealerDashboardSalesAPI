@@ -4,9 +4,13 @@ export const ServiceHistory = () => {
   const [vin, setVin] = useState("");
   const [appointments, setAppointments] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8080/';
+
   useEffect(() => {
     async function getAppointments() {
-      const appointmentsUrl = "http://localhost:8080/api/appointments/";
+      const appointmentsUrl = `${baseUrl}appointments/`;
       const response = await fetch(appointmentsUrl);
       if (response.ok) {
         const responseData = await response.json();
