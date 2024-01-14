@@ -7,7 +7,7 @@ export const TechnicianForm = () => {
 
   const baseUrl = process.env.NODE_ENV === 'production'
   ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
-  : 'http://localhost:8000/api/';
+  : 'http://localhost:8000/';
 
   //   Handle change within input
   const changeFirstName = (e) => {
