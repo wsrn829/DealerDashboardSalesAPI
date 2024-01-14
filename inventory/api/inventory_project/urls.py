@@ -27,6 +27,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('inventory_rest.urls')),
+    path('/', include('inventory_rest.urls')),
     # path('', lambda request: redirect('api/')),  # Redirect root URL to '/api/'
 ]

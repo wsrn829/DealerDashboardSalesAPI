@@ -23,12 +23,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.shortcuts import redirect
+# from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('inventory_rest.urls')),
-    path('', lambda request: redirect('api/')),  # Redirect root URL to '/api/'
-    # path('', RedirectView.as_view(url='/')),  # Redirect root URL to '/'
+    path('', include('inventory_rest.urls')),
+    # path('', lambda request: redirect('/')),  # Redirect root URL to '/api/'
+    # # path('', RedirectView.as_view(url='/')),  # Redirect root URL to '/'
 
 ]
