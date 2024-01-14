@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 export const TechnicianList = () => {
   const [technicians, setTechnicians] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8080/';
+
   useEffect(() => {
     const getTechnicians = async () => {
-      const techUrl = "http://localhost:8080/api/technicians/";
+      const techUrl = `${baseUrl}technicians/`;
       const response = await fetch(techUrl);
 
       if (response.ok) {
