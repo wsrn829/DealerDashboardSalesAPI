@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 export const AutoList = () => {
   const [automobiles, setAutomobiles] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8100/';
+
   //   Fetch automobile data
   useEffect(() => {
     const getAutomobiles = async () => {
-      const autoUrl = "http://localhost:8100/api/automobiles/";
+      const autoUrl = `${baseUrl}automobiles/`;
       const response = await fetch(autoUrl);
 
       if (response.ok) {
