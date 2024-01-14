@@ -77,9 +77,11 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    "http://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    "http://localhost:3000",
+    "http://*",
+    "https://*",
+    # "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
+    # "http://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
+    # "http://localhost:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -92,7 +94,7 @@ ROOT_URLCONF = 'inventory_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -155,7 +157,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build/static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

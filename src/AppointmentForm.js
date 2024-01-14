@@ -9,10 +9,14 @@ export const AppointmentForm = () => {
   const [technicians, setTechnicians] = useState([]);
   const [reason, setReason] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8000/api/';
+
   // Getting data from technicians list
   useEffect(() => {
     async function getTechnicians() {
-      const techniciansUrl = "http://localhost:8080/api/technicians/";
+      const techniciansUrl = `${baseUrl}technicians/`;
       const response = await fetch(techniciansUrl);
       if (response.ok) {
         const responseData = await response.json();
@@ -20,7 +24,7 @@ export const AppointmentForm = () => {
       }
     }
     getTechnicians();
-  }, []);
+ []);
 
   //   Handling state change
   const changeVin = (e) => {
@@ -55,7 +59,7 @@ export const AppointmentForm = () => {
       technician,
     };
 
-    const createAppointmentUrl = "http://localhost:8080/api/appointments/";
+    const createAppointmentUrl = `${baseUrl}appointments/`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(newAppointmentData),

@@ -5,6 +5,10 @@ export const TechnicianForm = () => {
   const [lastName, setLastName] = useState("");
   const [employeeId, setEmployeeId] = useState("");
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8000/api/';
+
   //   Handle change within input
   const changeFirstName = (e) => {
     setFirstName(e.target.value);
@@ -27,8 +31,7 @@ export const TechnicianForm = () => {
         last_name: lastName,
     };
 
-
-    const createTechUrl = "http://localhost:8080/api/technicians/";
+    const createTechUrl = `${baseUrl}technicians/`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(newTechData),
