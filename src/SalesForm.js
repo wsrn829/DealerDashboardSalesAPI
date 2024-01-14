@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
+const salesUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8090/';
+
+const inventoryUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8100/';
 
 
 function SalesForm({ getSales }) {
@@ -46,7 +53,7 @@ function SalesForm({ getSales }) {
         console.log(data)
 
 
-        const saleUrl = 'http://localhost:8090/api/sales/';
+        const saleUrl = `${salesUrl}sales/`;
         const fetchConfig = {
           method: "post",
           body: JSON.stringify(data),
@@ -70,10 +77,10 @@ function SalesForm({ getSales }) {
 
 
     const fetchData = async () => {
-    const url = 'http://localhost:8090/api/salespeople/';
-    const url1 = 'http://localhost:8090/api/customers/';
-    const url2 = 'http://localhost:8100/api/automobiles/';
-    const url3 = 'http://localhost:8090/api/sales/';
+    const url = `${salesUrl}salespeople/`;
+    const url1 = `${salesUrl}customers/`;
+    const url2 = `${inventoryUrl}automobiles/`;
+    const url3 = `${salesUrl}sales/`;
 
     const response = await fetch(url);
     const response1 = await fetch(url1);
