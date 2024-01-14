@@ -1,10 +1,13 @@
 import React, { useState, useEffect }  from "react";
 
+const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+    : 'http://localhost:8090/';
 
 function CustomersList() {
     const [customer, setCustomer] = useState([]);
     async function LoadCustomers() {
-      const response = await fetch("http://localhost:8090/api/customers/");
+      const response = await fetch(`${baseUrl}customers/`);
       if (response.ok) {
           const data = await response.json()
           setCustomer(data.customer)
