@@ -27,7 +27,9 @@ export default function CustomersForm({ getCustomers }) {
         setPhoneNumber(value)
     }
 
-
+    const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+    : 'http://localhost:8090/';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +39,7 @@ export default function CustomersForm({ getCustomers }) {
         data.address = address;
         data.phone_number = phoneNumber;
 
-        const customersUrl = 'http://localhost:8090/api/customers/';
+        const customersUrl = `${baseUrl}customers/`;
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -54,7 +56,7 @@ export default function CustomersForm({ getCustomers }) {
             setAddress('')
             setPhoneNumber('')
             const getCustomers = async () => {
-              const customerResponse = await fetch('http://localhost:8090/api/customers/');
+              const customerResponse = await fetch(`${baseUrl}customers/`);
 
               if (customerResponse.ok) {
                 const data = await customerResponse.json();
