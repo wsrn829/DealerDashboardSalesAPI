@@ -7,10 +7,14 @@ export const AutoForm = () => {
   const [model, setModel] = useState("");
   const [models, setModels] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8100/';
+
   //   Fetch model data
   useEffect(() => {
     const getModels = async () => {
-      const modelUrl = "http://localhost:8100/api/models/";
+      const modelUrl = `${baseUrl}models/`;
       const response = await fetch(modelUrl);
 
       if (response.ok) {
@@ -26,7 +30,7 @@ export const AutoForm = () => {
 
     const newAutoData = { color, year, vin, model_id: model };
 
-    const createAutomobileUrl = "http://localhost:8100/api/automobiles/";
+    const createAutomobileUrl = `${baseUrl}automobiles/`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(newAutoData),
