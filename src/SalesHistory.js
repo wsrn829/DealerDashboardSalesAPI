@@ -19,8 +19,12 @@ export default function SalesHistory() {
     salesPerson: salesPerson,
   };
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+  ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+  : 'http://localhost:8090/';
+
   async function LoadSales() {
-    const response = await fetch("http://localhost:8090/api/sales/");
+    const response = await fetch(`${baseUrl}sales/`);
     if (response.ok) {
       const data = await response.json();
       setSales(data.sale);
@@ -28,7 +32,7 @@ export default function SalesHistory() {
   }
 
   async function getSalesPeople() {
-    const url = "http://localhost:8090/api/salespeople/";
+    const url = `${baseUrl}salespeople/`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
