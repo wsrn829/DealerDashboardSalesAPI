@@ -21,6 +21,9 @@ export default function ModelForm() {
     setmanufacturer_id(value);
   };
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+    : 'http://localhost:8100/';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +34,7 @@ export default function ModelForm() {
     manufacturer_id:manufacturer_id
     }
 
-    const modelsURL = "http://localhost:8100/api/models/";
+    const modelsURL = `${baseUrl}models/`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),
@@ -51,7 +54,7 @@ export default function ModelForm() {
   };
 
   const fetchData = async () => {
-    const url = "http://localhost:8100/api/manufacturers/";
+    const url = `${baseUrl}manufacturers/`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();

@@ -3,9 +3,13 @@ import React, { useState, useEffect } from "react";
 export const ModelList = () => {
   const [models, setModels] = useState([]);
 
+  const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
+    : 'http://localhost:8100/';
+
   useEffect(() => {
     const getModels = async () => {
-      const modelUrl = "http://localhost:8100/api/models/";
+      const modelUrl = `${baseUrl}models/`;
       const response = await fetch(modelUrl);
 
       if (response.ok) {
