@@ -9,6 +9,7 @@ export default function ManufacturerList() {
     : 'http://localhost:8100/';
 
     async function LoadManufacturer() {
+        // Postman shows 200 OK
         const response = await fetch(`${baseUrl}manufacturers/`);
         if (response.ok) {
           const data = await response.json();

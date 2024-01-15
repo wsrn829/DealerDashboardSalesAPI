@@ -8,6 +8,7 @@ function SalesList() {
     ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
     : 'http://localhost:8090/';
 
+    // Postman shows 200 OK
     async function LoadSales() {
         const response = await fetch(`${baseUrl}sales/`);
         if (response.ok) {

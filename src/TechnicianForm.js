@@ -31,6 +31,7 @@ export const TechnicianForm = () => {
         last_name: lastName,
     };
 
+    // Postman shows 200 OK
     const createTechUrl = `${baseUrl}technicians/`;
     const fetchConfig = {
       method: "post",

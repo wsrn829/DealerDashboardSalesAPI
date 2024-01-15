@@ -13,7 +13,7 @@ export const AppointmentForm = () => {
   ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
   : 'http://localhost:8000/';
 
-  // Getting data from technicians list
+  // Getting data from technicians list (Postman shows 200 OK)
   useEffect(() => {
     async function getTechnicians() {
       const techniciansUrl = `${baseUrl}technicians/`;

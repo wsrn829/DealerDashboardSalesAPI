@@ -7,6 +7,7 @@ const baseUrl = process.env.NODE_ENV === 'production'
 function CustomersList() {
     const [customer, setCustomer] = useState([]);
     async function LoadCustomers() {
+      // Postman shows 200 OK
       const response = await fetch(`${baseUrl}customers/`);
       if (response.ok) {
           const data = await response.json()

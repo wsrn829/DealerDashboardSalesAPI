@@ -7,6 +7,8 @@ export const AppointmentList = () => {
   ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
   : 'http://localhost:8000/';
 
+
+  // Postman shows 200 OK
   useEffect(() => {
     async function getAppointments() {
       const appointmentsUrl = `${baseUrl}appointments/`;

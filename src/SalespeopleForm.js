@@ -33,6 +33,7 @@ function SalespeopleForm(getSalespeople) {
     data.last_name = lastName;
     data.employee_id = employeeId;
 
+    // Postman shows 200 OK
     const salespersonUrl = `${baseUrl}salespeople/`;
     const fetchConfig = {
       method: "post",

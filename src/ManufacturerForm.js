@@ -17,6 +17,7 @@ export default function ManufacturerForm() {
     ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
     : 'http://localhost:8100/';
 
+  // Postman shows 200 OK
   const manufacturerURL = `${baseUrl}manufacturers/`;
   const fetchConfig = {
     method: "post",

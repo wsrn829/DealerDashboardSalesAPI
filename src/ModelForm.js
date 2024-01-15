@@ -34,6 +34,7 @@ export default function ModelForm() {
     manufacturer_id:manufacturer_id
     }
 
+    // Postman shows 200 OK
     const modelsURL = `${baseUrl}models/`;
     const fetchConfig = {
       method: "post",

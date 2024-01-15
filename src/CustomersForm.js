@@ -56,6 +56,8 @@ export default function CustomersForm({ getCustomers }) {
             setAddress('')
             setPhoneNumber('')
             const getCustomers = async () => {
+            
+              // Postman shows 200 OK
               const customerResponse = await fetch(`${baseUrl}customers/`);
 
               if (customerResponse.ok) {

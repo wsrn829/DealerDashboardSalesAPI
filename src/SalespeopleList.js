@@ -8,6 +8,8 @@ function SalespeopleList() {
     ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
     : 'http://localhost:8090/';
 
+    // Postman shows 200 OK
+
     async function LoadSalespeople() {
         const response = await fetch(`${baseUrl}salespeople/`);
         if (response.ok) {

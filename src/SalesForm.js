@@ -75,7 +75,7 @@ function SalesForm({ getSales }) {
         }
       }
 
-
+    // Postman show 200 OK
     const fetchData = async () => {
     const url = `${salesUrl}salespeople/`;
     const url1 = `${salesUrl}customers/`;

@@ -7,6 +7,7 @@ export const TechnicianList = () => {
   ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
   : 'http://localhost:8080/';
 
+  // Postman shows 200 OK
   useEffect(() => {
     const getTechnicians = async () => {
       const techUrl = `${baseUrl}technicians/`;

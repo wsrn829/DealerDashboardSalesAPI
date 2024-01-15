@@ -9,6 +9,7 @@ export const ModelList = () => {
 
   useEffect(() => {
     const getModels = async () => {
+      //Postman shows 200 OK
       const modelUrl = `${baseUrl}models/`;
       const response = await fetch(modelUrl);
 

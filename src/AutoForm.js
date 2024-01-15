@@ -11,7 +11,7 @@ export const AutoForm = () => {
   ? 'https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/'
   : 'http://localhost:8100/';
 
-  //   Fetch model data
+  //   Fetch model data (Postman shows 200 OK)
   useEffect(() => {
     const getModels = async () => {
       const modelUrl = `${baseUrl}models/`;
@@ -30,6 +30,7 @@ export const AutoForm = () => {
 
     const newAutoData = { color, year, vin, model_id: model };
 
+    // Postman shows 200 OK
     const createAutomobileUrl = `${baseUrl}automobiles/`;
     const fetchConfig = {
       method: "post",
