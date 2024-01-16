@@ -9,11 +9,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.5",
     "cors": "^2.8.5",
-    "curl": "^0.1.4",
-    "fs": "^0.0.1-security",
-    "http-browserify": "^1.7.0",
-    "net": "^1.0.2",
-    "nvm": "^0.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
@@ -21,11 +16,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -44,25 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.23.7",
-    "@babel/preset-env": "^7.23.8",
-    "@babel/preset-react": "^7.23.3",
-    "assert": "^2.1.0",
-    "browserify-zlib": "^0.2.0",
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.0",
-    "events": "^3.3.0",
-    "https-browserify": "^1.0.0",
-    "node-polyfill-webpack-plugin": "^3.0.0",
-    "path-browserify": "^1.0.1",
-    "process": "^0.11.10",
-    "punycode": "^2.3.1",
-    "querystring-es3": "^0.2.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "url": "^0.11.3",
-    "util": "^0.12.5"
   }
 }
