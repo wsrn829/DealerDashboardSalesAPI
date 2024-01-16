@@ -20,6 +20,16 @@ import { ServiceHistory } from "./ServiceHistory";
 import { AutoList } from "./AutoList";
 import { AutoForm } from "./AutoForm";
 
+
+const cors = require("cors");
+const express = require("express");
+const app = express();
+
+app.use(cors());
+
+// const cors = require("cors");
+// App.use(cors());
+
 function App(props) {
   return (
     <BrowserRouter>
