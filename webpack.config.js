@@ -1,37 +1,27 @@
-// const path = require('path');
+const webpack = require('webpack');
 
-// module.exports = {
-//   entry: './src/index.js', // Update this based on your entry file
-//   output: {
-//     filename: 'bundle.js',
-//     path: path.resolve(__dirname, 'dist'),
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.js$/,
-//         exclude: /node_modules/,
-//         use: {
-//           loader: 'babel-loader',
-//           options: {
-//             presets: ['@babel/preset-env'],
-//           },
-//         },
-//       },
-//     ],
-//   },
-//   resolve: {
-//     fallback: {
-//       "zlib": require.resolve("browserify-zlib"),
-//       "querystring": require.resolve("querystring-es3"),
-//       "path": require.resolve("path-browserify"),
-//       "buffer": require.resolve("buffer/"),
-//       "crypto": require.resolve("crypto-browserify"),
-//       "stream": require.resolve("stream-browserify"),
-//       "util": require.resolve("util/"),
-//       "http": false,
-//       "fs": false, // This is to handle 'fs' module, you can add more as needed
-//       "net": false, // Add this line for the 'net' module
-//     }
-//   }
-// };
+module.exports = {
+  // other webpack configuration settings
+  resolve: {
+    fallback: {
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      assert: require.resolve('assert'),
+      buffer: require.resolve('buffer'),
+      crypto: require.resolve('crypto-browserify'),
+      events: require.resolve('events'),
+      path: require.resolve('path-browserify'),
+      punycode: require.resolve('punycode'),
+      process: require.resolve('process/browser'),
+      querystring: require.resolve('querystring-es3'),
+      stream: require.resolve('stream-browserify'),
+      url: require.resolve('url'),
+      util: require.resolve('util'),
+    },
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+  ],
+};
