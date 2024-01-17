@@ -6,7 +6,7 @@ function Nav() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
-          CarCar
+          DealerDashboard
         </NavLink>
         <button
           className="navbar-toggler"
@@ -25,6 +25,15 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
+                to="/manufacturers/create"
+              >
+                Add a Manufacturer
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
                 to="/manufacturers"
               >
                 Manufacturers
@@ -34,18 +43,9 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-                to="/manufacturers/create"
-              >
-                Create a Manufacturer
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
                 to="/models/create"
               >
-                Create a Car Model
+                Add a Car Model
               </NavLink>
             </li>
             <li className="nav-item">
@@ -61,6 +61,15 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
+                to="/automobiles/create"
+              >
+                Add an Automobile
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
                 to="/automobiles"
               >
                 Automobiles
@@ -70,18 +79,9 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-                to="/automobiles/create"
-              >
-                Create an Automobile
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
                 to="/technicians/create"
               >
-                Create a Technician
+                Add a Technician
               </NavLink>
             </li>
             <li className="nav-item">
@@ -90,7 +90,7 @@ function Nav() {
                 aria-current="page"
                 to="/technicians"
               >
-                Technician List
+                Technicians
               </NavLink>
             </li>
             <li className="nav-item">
@@ -99,7 +99,7 @@ function Nav() {
                 aria-current="page"
                 to="/appointments/create"
               >
-                Create a Service Appointment
+                Add a Service Appointment
               </NavLink>
             </li>
             <li className="nav-item">
@@ -108,7 +108,7 @@ function Nav() {
                 aria-current="page"
                 to="/appointments"
               >
-                Appointments
+                Service Appointments
               </NavLink>
             </li>
             <li className="nav-item">
@@ -124,6 +124,15 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
+                to="/salespeople/create"
+              >
+                Add a Salesperson
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
                 to="/salespeople"
               >
                 Salespeople
@@ -133,9 +142,9 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-                to="/salespeople/create"
+                to="/customers/create"
               >
-                Create a Salesperson
+                Add a Customer
               </NavLink>
             </li>
             <li className="nav-item">
@@ -151,9 +160,9 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-                to="/customers/create"
+                to="/sales/create"
               >
-                Create a Customer
+                Add a Sale
               </NavLink>
             </li>
             <li className="nav-item">
@@ -163,15 +172,6 @@ function Nav() {
                 to="/sales/"
               >
                 Sales
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
-                to="/sales/create"
-              >
-                Create a Sale
               </NavLink>
             </li>
             <li className="nav-item">
