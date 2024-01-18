@@ -79,9 +79,7 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOWED_ORIGINS = [
     "http://*",
     "https://*",
-    # "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    # "http://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    # "http://localhost:3000",
+    "https://dealerdashboard.netlify.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
