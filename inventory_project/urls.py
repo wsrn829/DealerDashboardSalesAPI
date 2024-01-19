@@ -21,7 +21,7 @@ Including another URLconf
 #     path("api/", include("inventory_rest.urls")),
 # ]
 
-from django.urls import re_path
+# from django.urls import re_path
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
@@ -31,7 +31,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('inventory_rest.urls')),
-    re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
+    # re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
     # path('', lambda request: redirect('/')),  # Redirect root URL to '/api/'
     # # path('', RedirectView.as_view(url='/')),  # Redirect root URL to '/'
 ]
