@@ -30,8 +30,8 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    "corsheaders",
-    "service_rest.apps.ServiceRestConfig",
+    'corsheaders',
+    'service_rest.apps.ServiceRestConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,13 +52,18 @@ MIDDLEWARE = [
 ]
 
 ALLOWED_HOSTS = [
+    "*",
+    "dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
     "localhost",
     "inventory-api",
     "project-beta-inventory-api-1",
+    "inventory-api",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
+    "http://*",
+    "https://*",
+    "https://dealerdashboard.netlify.app",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -92,9 +98,12 @@ WSGI_APPLICATION = 'service_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = dj_database_url.config()
+# DATABASES = {}
+# DATABASES["default"] = dj_database_url.config()
 
+DATABASES = {
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -130,8 +139,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build/static')]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
