@@ -19,7 +19,7 @@ def poll(repeat=True):
     while True:
         print('Sales poller polling for data')
         try:
-            url = "http://inventory-api:8000/api/automobiles/"
+            url = "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/automobiles/"
             response = requests.get(url)
             content = json.loads(response.content)
             print("POLLER_CONTENT", content)
