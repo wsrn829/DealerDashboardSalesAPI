@@ -47,13 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
-    # 'django.contrib.staticfiles',  # Removed as it's frontend-related
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -61,38 +60,70 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ALLOWED_HOSTS = [
     "*",
-    "dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    "dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
-    "dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
-    "localhost",
-    "sales-api",
-    "project-beta-inventory-api-1",
-    "sales-api",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://dealerdashboard.netlify.app",
-    "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    "https://dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
-    "https://dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
     "http://localhost:3000",
-    "http://localhost:8000",
-    "http://localhost:8080",
-    "http://localhost:8090",
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://*",
-    "https://*",
-    "https://dealerdashboard.netlify.app",
-    "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
-    "https://dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
-    "https://dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
-]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 CORS_ALLOW_CREDENTIALS = True
+
+
+    # "dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
+    # "dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
+    # "dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
+    # "localhost",
+    # "sales-api",
+    # "project-beta-inventory-api-1",
+    # "sales-api",
+
+
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://dealerdashboard.netlify.app",
+#     "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
+#     "https://dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
+#     "https://dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
+#     "http://localhost:3000",
+#     "http://localhost:8000",
+#     "http://localhost:8080",
+#     "http://localhost:8090",
+# ]
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://*",
+#     "https://*",
+#     "https://dealerdashboard.netlify.app",
+#     "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
+#     "https://dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
+#     "https://dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
+# ]
+
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://*",
+#     "https://*",
+#     "https://dealerdashboard.netlify.app",
+#     "https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com",
+#     "https://dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
+#     "https://dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
+# ]
+
+
+
+
+
+
+
+
 
 DJWTO_MODE = "TWO-COOKIES"
 DJWTO_ACCESS_TOKEN_LIFETIME = None
