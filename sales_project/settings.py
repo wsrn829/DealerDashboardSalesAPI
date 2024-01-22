@@ -107,7 +107,6 @@ CORS_ALLOW_CREDENTIALS = True
 # ]
 
 
-
 # CORS_ALLOWED_ORIGINS = [
 #     "http://*",
 #     "https://*",
@@ -116,13 +115,6 @@ CORS_ALLOW_CREDENTIALS = True
 #     "https://dealerdashboardserviceapi-db6bf25312d7.herokuapp.com",
 #     "https://dealerdashboardsalesapi-f1c2cc0024f6.herokuapp.com",
 # ]
-
-
-
-
-
-
-
 
 
 DJWTO_MODE = "TWO-COOKIES"
@@ -152,8 +144,10 @@ WSGI_APPLICATION = 'sales_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = dj_database_url.config()
+
+DATABASES = {
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
