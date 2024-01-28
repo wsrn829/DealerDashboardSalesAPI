@@ -1,21 +1,29 @@
-# DealerDashboard (React + Django + PostgreSQL + Heroku; Microservices, Docker, and Polling)
+# DealerDashboard
+Project Deployment: https://dealerdashboard.netlify.app
+- React + Django + PostgreSQL; 
+- Docker + Microservices + Polling; 
+- Heroku + Netlify
 
 --------
 
-This App used Django for the backend and React for the frontend. Its complexity arises from the implementation of microservices and polling from the monolith. Containerization is achieved through the use of Docker.
-
-*This would be my first time to independently deploy an App with Docker and microservices on Heroku.*
+This is a full-stack car dealership management application to streamline and optimize all aspects of dealership operations.\
+These are what I (Sarina) did:
+- Created PostgreSQL databases with Django, SQL, and migrations for efficient data management and retrieval
+- Created REST API endpoints for streamlined data communication between the React frontend and the databases
+- Utilized Docker, Microservices, and polling strategies to optimize data synchronization across various services
+- Established four CI/CD pipelines for backend and frontend deployment on Heroku and Netlify, incorporating
+database migrations, environment variable configuration, and extensive debugging to ensure continuous delivery
 
 --------
-
-This is a program to help you manage your car dealership.
 
 Brought to you by:
 
-* Alan Y.C. Cheng - Service Microservice
-* Sarina Wu - Sales Microservice
+* Alan Y.C. Cheng - Service Microservice Source Code, Inventory (Monolith) Source Code, Original README
+* Sarina Wu - Sales Microservice Source Code, Wireframe, Deployment on Heroku and Netlify with Four CI/CD Pipelines and three PostgreSQL Databases, Updated README
 
-## Step-by-step Instructions to Run the Project
+---------
+
+Step-by-step Instructions to Run the Project
 
 1. Open Terminal on your computer
 
@@ -83,11 +91,6 @@ Service Microservice: http://localhost:8080/
 
 Sales Microservice: http://localhost:8090/
 
-
-### Inventory (Monolith) CRUD Route Documentation
-
-List Manufacturers (GET)
-http://localhost:8100/api/manufacturers/
 
 
 
