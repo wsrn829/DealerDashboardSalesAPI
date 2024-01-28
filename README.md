@@ -1,7 +1,7 @@
 # DealerDashboard
 Project Deployment: https://dealerdashboard.netlify.app
-- React + Django + PostgreSQL; 
-- Docker + Microservices + Polling; 
+- React + Django + PostgreSQL 
+- Docker + Microservices + Polling
 - Heroku + Netlify
 
 --------
