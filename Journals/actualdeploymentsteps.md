@@ -16,3 +16,10 @@ https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/ | https://git.heroku.com/de
 9. create static directory as in configuration
 10. correct path to wsgi.py
 11. run python manage.py collectstatic inside folder with manage.py
+
+
+12. heroku loggin
+13. heroku run python manage.py migrate -a dealerdashboardsalesapi
+14. heroku pg:psql -a dealerdashboardsalesapi
+15. \dt
+16. 

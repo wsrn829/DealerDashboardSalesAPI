@@ -13,8 +13,11 @@ from sales_rest.models import AutomobileVO
 
 # Import models from sales_rest, here.
 # from sales_rest.models import Something
+from sales_project.celery import app
 
 
+
+@app.task
 def poll(repeat=True):
     while True:
         print('Sales poller polling for data')

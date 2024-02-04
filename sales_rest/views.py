@@ -143,7 +143,7 @@ def api_list_sale(request):
     else:
         content = json.loads(request.body)
         try:
-            automobile_vin = content["automobile"]
+            automobile_vin = content["automobile"]["vin"]
             automobile = AutomobileVO.objects.get(vin=automobile_vin)
             content["automobile"] = automobile
         except AutomobileVO.DoesNotExist:
