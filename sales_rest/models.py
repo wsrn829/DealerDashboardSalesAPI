@@ -39,21 +39,21 @@ class Sale(models.Model):
 
     automobile=models.ForeignKey(
         AutomobileVO,
-        related_name="automobile_sales",
+        related_name="sales",
         on_delete=models.CASCADE,
         null=True
     )
 
     salesperson=models.ForeignKey(
         Salesperson,
-        related_name="salesperson_sales",
+        related_name="sales",
         on_delete=models.CASCADE,
         null=True
     )
 
     customer=models.ForeignKey(
         Customer,
-        related_name="customer_sales",
+        related_name="sales",
         on_delete=models.CASCADE,
         null=True
     )
