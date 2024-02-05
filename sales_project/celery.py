@@ -15,9 +15,3 @@ import poll.poller
 app.autodiscover_tasks()
 
 
-# app.conf.beat_schedule = {
-#     'poll-task': {
-#         'task': 'poll.poller.poll',  # Task to be scheduled
-#         'schedule': 60.0,  # Set the schedule (every 60 seconds in this example)
-#     },
-# }
