@@ -142,8 +142,11 @@ def api_list_sale(request):
         )
     else:
         content = json.loads(request.body)
+        print(f"Request content: {content}")  # Print the parsed request content
         try:
             automobile_vin = content["automobile"]
+            print(f"Automobile VIN: {automobile_vin}")  # Print the extracted VIN
+            print([auto.vin for auto in AutomobileVO.objects.all()])
             automobile = AutomobileVO.objects.get(vin=automobile_vin)
             content["automobile"] = automobile
         except AutomobileVO.DoesNotExist:

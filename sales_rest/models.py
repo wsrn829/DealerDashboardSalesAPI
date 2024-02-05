@@ -3,14 +3,13 @@ from django.urls import reverse
 
 # Create your models here.
 class AutomobileVO(models.Model):
-    import_href = models.CharField(max_length=200, unique=True, null=True)
     vin=models.CharField(max_length=17, unique=True, null=True)
     color = models.CharField(max_length=50, null=True)
     year = models.PositiveSmallIntegerField(null=True)
     sold=models.BooleanField(default=False, null=True)
 
     def __str__(self):
-        return f"{self.import_href} {self.vin} {self.color} {self.year} {self.sold}"
+        return f"{self.vin} {self.color} {self.year} {self.sold}"
 
 class Salesperson(models.Model):
     first_name=models.CharField(max_length=150, null=True)
