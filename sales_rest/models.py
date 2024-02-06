@@ -36,7 +36,7 @@ class Customer(models.Model):
 class Sale(models.Model):
     price=models.PositiveBigIntegerField(null=True)
 
-    automobile=models.OneToOneField(
+    automobile=models.ForeignKey(
         AutomobileVO,
         related_name="sales",
         on_delete=models.CASCADE,
