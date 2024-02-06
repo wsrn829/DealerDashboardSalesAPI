@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from django.db import IntegrityError
-
 from .common.myjson import ModelEncoder
+
 from .models import AutomobileVO, Salesperson, Customer, Sale
 
 
@@ -176,19 +175,13 @@ def api_list_sale(request):
                 status = 400,
             )
 
-        try:
-            sale = Sale.objects.create(
-                automobile=automobile,
-                salesperson=salesperson,
-                customer=customer,
-                price=content["price"],    
-            )
-            automobile.sold = True
-            automobile.save()
-        except IntegrityError:
-            return JsonResponse(
-                {"message": "A sale with this VIN already exists"}, status=400
-            )
+
+        sale = Sale.objects.create(**content)
+        return JsonResponse(
+            sale,
+            encoder=SalesEncoder,
+            safe=False,
+        )
 
 
 
