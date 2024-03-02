@@ -3,6 +3,7 @@ Project Deployment: https://dealerdashboard.netlify.app
 - React + Django + PostgreSQL 
 - Docker + Microservices + Polling
 - Heroku + Netlify
+- Celery + Redis
 
 --------
 
@@ -13,13 +14,31 @@ These are what I (Sarina) did:
 - Utilized Docker, Microservices, and polling strategies to optimize data synchronization across various services
 - Established four CI/CD pipelines for backend and frontend deployment on Heroku and Netlify, incorporating
 database migrations, environment variable configuration, and extensive debugging to ensure continuous delivery
+- Implemented distributed task processing and scheduling using Celery and Redis for efficient task execution and management during deployment on Heroku
 
 --------
 
+## Diagram of the Project
+
+<img width="800" alt="wireframe" src="https://github.com/wsrn829/wsrn829/assets/67284951/898834b9-20c4-416b-b788-387b2342e9ae">
+
+----------
+
 Brought to you by:
 
-* Alan Y.C. Cheng - Service Microservice Source Code, Inventory (Monolith) Source Code, Original README
-* Sarina Wu - Sales Microservice Source Code, Wireframe, Deployment on Heroku and Netlify with Four CI/CD Pipelines and three PostgreSQL Databases, Updated README
+* Alan Y.C. Cheng:
+  - Service Microservice Source Code
+  - Service Frontend Code
+  - Inventory (Monolith) Frontend Code
+  - Original README
+* Sarina Wu:
+  - Sales Microservice Source Code
+  - Sales Frontend Code
+  - Backend and Frontend Deployment on Heroku and Netlify with Four CI/CD Pipelines and three PostgreSQL Databases
+  - Distributed task processing and scheduling using Celery and Redis
+  - Styling and layout design using CSS and Bootstrap
+  - Wireframe
+  - Updated README
 
 ---------
 
@@ -68,15 +87,6 @@ docker-compose up
 http://localhost:3000
 
 9. Enjoy the program.
-
-
-## Diagram of the Project
-
-<img src="project-beta-diagram.png"
-     alt="Project Diagram"
-     style="width: 700px;" />
-
-
 
 
 
