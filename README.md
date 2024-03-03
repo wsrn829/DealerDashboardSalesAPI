@@ -18,6 +18,117 @@ database migrations, environment variable configuration, and extensive debugging
 
 --------
 
+During the deployment of DealerDashboard, I encountered a problem with data synchronization between the Inventory and Sales Microservices. Despite successfully deploying the three Microservices (Inventory, Service, Sales) on Heroku separately, along with three PostgreSQL databases, the Sales Microservice was not polling Automobile VIN from the Inventory Microservice. Consequently, the SalesForm could not create new Sale records.
+
+After troubleshooting, I found that the issue stemmed from the polling function not functioning correctly after the deployment of Microservices and PostgreSQL databases on Heroku. I solved this problem by implementing a distributed task system using Celery and Redis.
+
+Implementation Steps in Detail:
+
+1. Install Celery with pip: `pip install celery`
+
+2. Configure Celery in my Django settings.py file:
+```
+CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+```
+3. Create a Celery instance: In your Django project root (where manage.py is located), create a new file celery.py:
+```
+from __future__ import absolute_import, unicode_literals
+import os
+from celery import Celery
+from celery.schedules import crontab
+from sales_project import settings
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sales_project.settings')
+app = Celery('sales_project')
+app.config_from_object('django.conf:settings', namespace='CELERY')
+
+import poll.poller
+app.autodiscover_tasks()
+```
+4. Import the Celery instance: In my Django project's __init__.py file, add the following lines to import the Celery instance:
+```
+from __future__ import absolute_import, unicode_literals
+from .celery import app as celery_app
+
+__all__ = ('celery_app',)
+```
+5. Create a Celery task: Convert my polling function into a Celery task by adding the @app.task decorator:
+```
+import django
+import os
+import sys
+import time
+import json
+import requests
+
+sys.path.append("")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
+django.setup()
+
+from sales_rest.models import AutomobileVO
+from sales_project.celery import app
+
+def get_automobiles():
+    response = requests.get("https://dealer-dashboard-8d7b3aea3ae7.herokuapp.com/automobiles/")
+    content = json.loads(response.content)
+    print(AutomobileVO.objects.all)
+    print("POLLER_CONTENT", content)
+    for automobile in content["autos"]:
+        AutomobileVO.objects.update_or_create(
+            vin=automobile["vin"], 
+            defaults={
+                "vin": automobile["vin"],
+                "color": automobile["color"],
+                "year": automobile["year"],
+                "sold": automobile["sold"]
+            },
+        )
+
+
+@app.task
+def poll(repeat=True):
+    while True:
+        print('Before get_automobiles()')
+        try:
+            get_automobiles()
+            print('After get_automobiles()')
+        except Exception as e:
+            print(e, file=sys.stderr)
+        if not repeat:
+            break
+
+        time.sleep(60)
+        
+        
+if __name__ == "__main__":
+    poll()
+```
+6. Schedule the task: Use Celery's periodic task feature to run the polling task every 60 seconds. In my Django settings.py file, add:
+```
+from datetime import timedelta
+CELERY_BEAT_SCHEDULE = {
+    'poll-every-60-seconds': {
+        'task': 'poll.poller.poll',
+        'schedule': timedelta(seconds=60),
+    },
+}
+```
+7. Install Redis: Celery requires a message broker to handle requests. On Heroku, I used the Heroku Redis add-on. I installed it and set the REDIS_URL config var.
+
+8. Add a worker dyno: In my Procfile, add a line for the worker dyno that will run the Celery worker process:
+```
+worker: celery -A sales_project worker --loglevel=info
+```
+9. Add a beat dyno: In my Procfile, add a line for the beat dyno that will run the Celery beat process:
+```
+beat: celery -A sales_project beat --loglevel=info
+```
+10. Deploy to Heroku: Push these changes to Heroku. Heroku should start the worker and beat dynos automatically.
+
+-----------
+
 ## Diagram of the Project
 
 <img width="800" alt="wireframe" src="https://github.com/wsrn829/wsrn829/assets/67284951/898834b9-20c4-416b-b788-387b2342e9ae">
