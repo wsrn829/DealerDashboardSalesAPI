@@ -1,9 +1,9 @@
-# DealerDashboard(SalesAPI)
+# DealerDashboard(SalesAPI) - Microservice
 Project Deployment: https://dealerdashboard.netlify.app
-- React + Django + PostgreSQL 
-- Docker + Microservices + Polling
+
+- (Docker + Microservices) + (Polling + Celery + Redis)
 - Heroku + Netlify
-- Celery + Redis
+- Django + PostgreSQL + React 
 
 --------
 
@@ -29,15 +29,15 @@ Brought to you by:
 * Alan Y.C. Cheng:
   - Service Microservice Source Code
   - Service Frontend Code
-  - Inventory (Monolith) Frontend Code
+  - Inventory Frontend Code
   - Original README
 * Sarina Wu:
   - Sales Microservice Source Code
   - Sales Frontend Code
-  - Backend and Frontend Deployment on Heroku and Netlify with Four CI/CD Pipelines and three PostgreSQL Databases
+  - Backend and frontend deployment on Heroku and Netlify with four CI/CD Pipelines and three PostgreSQL Databases
   - Distributed task processing and scheduling using Celery and Redis
+  - Wireframe and Diagram
   - Styling and layout design using CSS and Bootstrap
-  - Wireframe
   - Updated README
 
 ---------
