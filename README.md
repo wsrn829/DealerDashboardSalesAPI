@@ -20,7 +20,7 @@ database migrations, environment variable configuration, and extensive debugging
 
 --------
 
-### The following is how I (Sarina) set up Celery and Redis as a distributed task system: 
+### The following is how I (Sarina) set up a distributed task system using Celery and Redis:   
 
 During the deployment of DealerDashboard, I encountered a problem with data synchronization between the Inventory and Sales Microservices. Despite successfully deploying the three Microservices (Inventory, Service, Sales) on Heroku separately, along with three PostgreSQL databases, the Sales Microservice was not polling Automobile VIN from the Inventory Microservice. Consequently, the SalesForm could not create new Sale records.
 
@@ -112,6 +112,7 @@ if __name__ == "__main__":
 6. Schedule the task: Use Celery's periodic task feature to run the polling task every 60 seconds. In my Django settings.py file, add:
 ```
 from datetime import timedelta
+
 CELERY_BEAT_SCHEDULE = {
     'poll-every-60-seconds': {
         'task': 'poll.poller.poll',
