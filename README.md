@@ -1,4 +1,6 @@
 # DealerDashboard(SalesAPI) - Microservice
+This is a full-stack car dealership management application to streamline and optimize all aspects of dealership operations.\
+
 Project Deployment: https://dealerdashboard.netlify.app
 
 - (Docker + Microservices) + (Polling + Celery + Redis)
@@ -7,8 +9,8 @@ Project Deployment: https://dealerdashboard.netlify.app
 
 --------
 
-This is a full-stack car dealership management application to streamline and optimize all aspects of dealership operations.\
-These are what I (Sarina) did:
+### These are what I (Sarina) did:
+
 - Created PostgreSQL databases with Django, SQL, and migrations for efficient data management and retrieval
 - Created REST API endpoints for streamlined data communication between the React frontend and the databases
 - Utilized Docker, Microservices, and polling strategies to optimize data synchronization across various services
@@ -17,6 +19,8 @@ database migrations, environment variable configuration, and extensive debugging
 - Implemented distributed task processing and scheduling using Celery and Redis for efficient task execution and management during deployment on Heroku
 
 --------
+
+### The following is how I (Sarina) set up Celery and Redis as a distributed task system: 
 
 During the deployment of DealerDashboard, I encountered a problem with data synchronization between the Inventory and Sales Microservices. Despite successfully deploying the three Microservices (Inventory, Service, Sales) on Heroku separately, along with three PostgreSQL databases, the Sales Microservice was not polling Automobile VIN from the Inventory Microservice. Consequently, the SalesForm could not create new Sale records.
 
