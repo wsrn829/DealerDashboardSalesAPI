@@ -1,7 +1,7 @@
 # DealerDashboard(SalesAPI) - Microservice
-This is a full-stack car dealership management application to streamline and optimize all aspects of dealership operations.\
+This is a full-stack car dealership management application to streamline and optimize all aspects of dealership operations.
 
-Project Deployment: https://dealerdashboard.netlify.app
+### Project Deployment: https://dealerdashboard.netlify.app
 
 - (Docker + Microservices) + (Polling + Celery + Redis)
 - Heroku + Netlify
