@@ -30,13 +30,13 @@ Implementation Steps in Detail:
 
 1. Install Celery with pip: `pip install celery`
 
-2. Configure Celery in my Django settings.py file:
+2. Configure Celery in the Django settings.py file:
 ```
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 ```
-3. Create a Celery instance: In your Django project root (where manage.py is located), create a new file celery.py:
+3. Create a Celery instance: In the Django project root (where manage.py is located), create a new file celery.py:
 ```
 from __future__ import absolute_import, unicode_literals
 import os
@@ -51,14 +51,14 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 import poll.poller
 app.autodiscover_tasks()
 ```
-4. Import the Celery instance: In my Django project's __init__.py file, add the following lines to import the Celery instance:
+4. Import the Celery instance: In the Django project's __init__.py file, add the following lines to import the Celery instance:
 ```
 from __future__ import absolute_import, unicode_literals
 from .celery import app as celery_app
 
 __all__ = ('celery_app',)
 ```
-5. Create a Celery task: Convert my polling function into a Celery task by adding the @app.task decorator:
+5. Create a Celery task: Convert the polling function into a Celery task by adding the @app.task decorator:
 ```
 import django
 import os
@@ -90,7 +90,6 @@ def get_automobiles():
             },
         )
 
-
 @app.task
 def poll(repeat=True):
     while True:
@@ -105,11 +104,10 @@ def poll(repeat=True):
 
         time.sleep(60)
         
-        
 if __name__ == "__main__":
     poll()
 ```
-6. Schedule the task: Use Celery's periodic task feature to run the polling task every 60 seconds. In my Django settings.py file, add:
+6. Schedule the task: Use Celery's periodic task feature to run the polling task every 60 seconds. In the Django settings.py file, add:
 ```
 from datetime import timedelta
 
@@ -122,15 +120,21 @@ CELERY_BEAT_SCHEDULE = {
 ```
 7. Install Redis: Celery requires a message broker to handle requests. On Heroku, I used the Heroku Redis add-on. I installed it and set the REDIS_URL config var.
 
-8. Add a worker dyno: In my Procfile, add a line for the worker dyno that will run the Celery worker process:
+8. Add a worker dyno: In Procfile, add a line for the worker dyno that will run the Celery worker process:
 ```
 worker: celery -A sales_project worker --loglevel=info
 ```
-9. Add a beat dyno: In my Procfile, add a line for the beat dyno that will run the Celery beat process:
+9. Add a beat dyno: In Procfile, add a line for the beat dyno that will run the Celery beat process:
 ```
 beat: celery -A sales_project beat --loglevel=info
 ```
 10. Deploy to Heroku: Push these changes to Heroku. Heroku should start the worker and beat dynos automatically.
+
+11. Summary:
+- The reason why the previous poller might not have been working after deployment on Heroku could be due to how Heroku manages its dynos. Heroku dynos are ephemeral, which means they can restart or move at any time. This can interrupt long-running processes like a polling function.
+- Celery and Redis are used to handle these types of background tasks in a more robust way. Celery is a task queue that can distribute work across threads or machines. Redis is used as the message broker for Celery, storing the tasks until they can be processed.
+- When we use Celery and Redis, the polling function becomes a task that is managed by Celery. Even if the Heroku dyno restarts or moves, the task remains in the Redis queue and can be picked up by a Celery worker when it's available. This ensures that the polling function continues to run as expected.
+- While Celery and Redis are often used in production environments due to their robustness and scalability, they can also be used in development environments. They are not strictly for production only. However, they do add complexity to your application, so they are typically used when the benefits (like improved robustness and scalability) outweigh the added complexity.
 
 -----------
 
